@@ -1,55 +1,58 @@
--- vim.g.neovide_remember_window_size = true
--- vim.g.neovide_cursor_antialiasing = true
--- vim.g.neovide_refresh_rate = 60
--- vim.g.neovide_input_use_logo = false
--- vim.g.neovide_input_use_vibrancy = true
--- vim.g.neovide_fullscreen = false
+vim.g.neovide_confirm_quit = true
+vim.g.neovide_cursor_antialiasing = true
+vim.g.neovide_refresh_rate = 60
+vim.g.neovide_refresh_rate_idle = 5
+vim.g.neovide_input_use_logo = false
+vim.g.neovide_input_use_vibrancy = true
+vim.g.neovide_fullscreen = true
 -- vim.g.neovide_transparency = 0.8
 -- vim.g.neovide_window_blurred = true
 -- vim.g.neovide_floating_blur_amount_x = 2.0
 -- vim.g.neovide_floating_blur_amount_y = 2.0
--- vim.g.neovide_hide_mouse_when_typing = false
--- vim.g.neovide_underline_stroke_scale = 1.0
--- vim.g.neovide_theme = 'auto'
--- vim.g.neovide_unlink_border_highlights = true
--- vim.g.neovide_refresh_rate_idle = 5
--- vim.g.neovide_no_idle = true
--- vim.g.neovide_confirm_quit = true
--- vim.g.neovide_scale_factor = 1.0
--- vim.g.neovide_remember_window_size = true
--- vim.g.neovide_cursor_trail_size = 0.8
--- vim.g.neovide_cursor_animate_in_insert_mode = true
--- vim.g.neovide_cursor_animate_command_line = true
--- vim.g.neovide_cursor_unfocused_outline_width = 0.125
--- vim.g.neovide_cursor_vfx_mode = ""
--- vim.g.neovide_cursor_vfx_opacity = 200.0
--- vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
--- vim.g.neovide_cursor_vfx_particle_density = 7.0
--- vim.g.neovide_cursor_vfx_particle_speed = 10.0
--- vim.g.neovide_cursor_vfx_particle_phase = 1.5
--- vim.g.neovide_cursor_vfx_particle_curl = 1.0
---
--- -- macOS specific options
--- local change_scale_factor = function(delta)
---   vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
--- end
--- vim.keymap.set("n", "<C-=>", function()
---   change_scale_factor(1.25)
--- end)
--- vim.keymap.set("n", "<C-->", function()
---   change_scale_factor(1/1.25)
--- end)
---
--- vim.g.neovide_input_macos_alt_is_meta = true
---
--- if vim.g.neovide then
---   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
---   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
---   vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
---   vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
---   vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
---   vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
--- end
+vim.g.neovide_hide_mouse_when_typing = false
+vim.g.neovide_underline_stroke_scale = 1.0
+-- dark, light, auto
+vim.g.neovide_theme = "auto"
+vim.g.neovide_unlink_border_highlights = true
+vim.g.neovide_refresh_rate_idle = 5
+vim.g.neovide_no_idle = true
+vim.g.neovide_confirm_quit = true
+vim.g.neovide_scale_factor = 1.0
+vim.g.neovide_remember_window_size = false
+vim.g.neovide_cursor_trail_size = 0.8
+vim.g.neovide_cursor_animate_in_insert_mode = true
+vim.g.neovide_cursor_animate_command_line = true
+vim.g.neovide_cursor_unfocused_outline_width = 0.125
+vim.g.neovide_cursor_vfx_mode = "railgun"
+vim.g.neovide_cursor_vfx_opacity = 200.0
+vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+vim.g.neovide_cursor_vfx_particle_density = 20.0
+vim.g.neovide_cursor_vfx_particle_speed = 1.0
+vim.g.neovide_cursor_vfx_particle_phase = 1.5
+vim.g.neovide_cursor_vfx_particle_curl = 1.0
+vim.o.guifont = "Inconsolata:h18"
+
+-- macOS specific options
+local change_scale_factor = function(delta)
+	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+vim.keymap.set("n", "<C-=>", function()
+	change_scale_factor(1.25)
+end)
+vim.keymap.set("n", "<C-->", function()
+	change_scale_factor(1 / 1.25)
+end)
+
+vim.g.neovide_input_macos_alt_is_meta = true
+
+if vim.g.neovide then
+	vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
+	vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+	vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
+	vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
+	vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+	vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
+end
 --
 
 vim.opt.backup = false -- creates a backup file
@@ -94,14 +97,14 @@ vim.opt.title = false
 -- colorcolumn = "80",
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
-vim.opt.fillchars:append {
-  stl = " ",
-}
+vim.opt.fillchars:append({
+	stl = " ",
+})
 
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append("c")
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd([[set iskeyword+=-]])
 
 vim.g.netrw_banner = 0
 -- vim.g.netrw_mouse = 2

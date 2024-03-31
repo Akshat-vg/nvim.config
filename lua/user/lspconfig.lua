@@ -73,6 +73,8 @@ function M.config()
 		"vtsls",
 		"tailwindcss",
 		"clangd",
+    "gopls",
+    "rust_analyzer",
 		-- "tsserver",
 	}
 

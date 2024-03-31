@@ -7,10 +7,11 @@ local M = {
 
 function M.config()
 	require("rose-pine").setup({
-		disable_background = true,
+		disable_background = false,
 	})
-	-- vim.cmd.colorscheme("rose-pine")
-  vim.cmd.colorscheme("tokyonight")
+  -- vim.cmd.colorscheme("darkplus")
+	vim.cmd.colorscheme("rose-pine")
+  -- vim.cmd.colorscheme("tokyonight")
 end
 
 return M
